@@ -1,0 +1,610 @@
+openapi: 3.0.3
+info:
+  title: Cart API Specification
+  description: API documentation for the Cart bounded context.
+servers:
+  - url: /api/v1
+    description: Development Server
+tags:
+  - name: Cart
+    description: Operations related to the Cart bounded context.
+paths:
+  /add-item:
+    post:
+      summary: Add Item
+      description: Executes the "Add Item" command.
+      operationId: addItem
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddItemRequest'
+  /apply-promotion:
+    post:
+      summary: Apply Promotion
+      description: Executes the "Apply Promotion" command.
+      operationId: applyPromotion
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplyPromotionRequest'
+  /clear-cart:
+    post:
+      summary: Clear Cart
+      description: Executes the "Clear Cart" command.
+      operationId: clearCart
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClearCartRequest'
+  /create-cart:
+    post:
+      summary: Create Cart
+      description: Executes the "Create Cart" command.
+      operationId: createCart
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCartRequest'
+  /delete-cart:
+    post:
+      summary: Delete Cart
+      description: Executes the "Delete Cart" command.
+      operationId: deleteCart
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteCartRequest'
+  /get-all-carts/{userId}:
+    get:
+      summary: Get All Carts
+      description: Retrieves data based on the "Get All Carts" query. This is a synchronous query operation.
+      operationId: getAllCarts
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+  /get-cart-by-id/{id}:
+    get:
+      summary: Get Cart by ID
+      description: Retrieves data based on the "Get Cart by ID" query. This is a synchronous query operation.
+      operationId: getCartByID
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+  /remove-item:
+    post:
+      summary: Remove Item
+      description: Executes the "Remove Item" command.
+      operationId: removeItem
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveItemRequest'
+  /remove-promotion:
+    post:
+      summary: Remove Promotion
+      description: Executes the "Remove Promotion" command.
+      operationId: removePromotion
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemovePromotionRequest'
+  /reprice-cart:
+    post:
+      summary: Reprice Cart
+      description: Executes the "Reprice Cart" command.
+      operationId: repriceCart
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepriceCartRequest'
+  /save-cart:
+    post:
+      summary: Save Cart
+      description: Executes the "Save Cart" command.
+      operationId: saveCart
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveCartRequest'
+  /update-item-quantity:
+    post:
+      summary: Update Item Quantity
+      description: Executes the "Update Item Quantity" command.
+      operationId: updateItemQuantity
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemQuantityRequest'
+  /update-shipping:
+    post:
+      summary: Update Shipping
+      description: Executes the "Update Shipping" command.
+      operationId: updateShipping
+      tags:
+        - Cart
+      responses:
+        '200':
+          description: 'OK: The resource was updated successfully.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateShippingRequest'
+components:
+  schemas:
+    AddItemRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+      required:
+        - id
+    ApplyPromotionRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+        promotionId:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+        discountAmount:
+          type: string
+        discountType:
+          type: string
+      required:
+        - id
+    Cart:
+      type: object
+      description: Represents a Cart in the system.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the Cart (primary key).
+          example: cart-001
+        userId:
+          type: string
+          description: The userId of the Cart.
+          example: user-101
+        sessionId:
+          type: string
+          description: The sessionId of the Cart.
+          example: sess-abc
+        saved:
+          type: boolean
+          description: The saved of the Cart.
+          example: 'false'
+        createdAt:
+          type: string
+          description: The createdAt of the Cart.
+          example: '2026-01-15T10:00:00Z'
+        updatedAt:
+          type: string
+          description: The updatedAt of the Cart.
+          example: '2026-01-15T11:00:00Z'
+        expiresAt:
+          type: string
+          description: The expiresAt of the Cart.
+          example: '2026-02-14T10:00:00Z'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        quote:
+          $ref: '#/components/schemas/Quote'
+        shippingEstimation:
+          $ref: '#/components/schemas/ShippingEstimation'
+      required:
+        - id
+        - saved
+        - createdAt
+        - updatedAt
+        - expiresAt
+    CartItem:
+      type: object
+      description: Represents a CartItem in the system.
+      properties:
+        productId:
+          type: string
+          description: Unique identifier for the CartItem (primary key).
+          example: PROD-001
+        sku:
+          type: string
+          description: The sku of the CartItem.
+          example: SKU-BLK-M
+        name:
+          type: string
+          description: The name of the CartItem.
+          example: Classic T-Shirt
+        quantity:
+          type: number
+          description: The quantity of the CartItem.
+          example: '2'
+        unitPrice:
+          type: number
+          description: The unitPrice of the CartItem.
+          example: '29.99'
+        currency:
+          type: string
+          description: The currency of the CartItem.
+          example: USD
+        imageUrl:
+          type: string
+          description: The imageUrl of the CartItem.
+          example: https://img.example.com/tshirt.jpg
+      required:
+        - productId
+        - sku
+        - name
+        - quantity
+        - unitPrice
+        - currency
+    ClearCartRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+      required:
+        - id
+    CreateCartRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: user-101
+        sessionId:
+          type: string
+          example: sess-abc
+    DeleteCartRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+      required:
+        - id
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: An error occurred.
+    Quote:
+      type: object
+      description: Represents a Quote in the system.
+      properties:
+        subtotal:
+          type: number
+          description: The subtotal of the Quote.
+          example: '149.97'
+        tax:
+          type: number
+          description: The tax of the Quote.
+          example: '14.99'
+        shipping:
+          type: number
+          description: The shipping of the Quote.
+          example: '5.99'
+        discount:
+          type: number
+          description: The discount of the Quote.
+          example: '10.00'
+        total:
+          type: number
+          description: The total of the Quote.
+          example: '160.95'
+        currency:
+          type: string
+          description: The currency of the Quote.
+          example: USD
+        calculatedAt:
+          type: string
+          description: The calculatedAt of the Quote.
+          example: '2026-01-15T11:00:00Z'
+        appliedPromotions:
+          type: array
+          items:
+            type: object
+            example: '[PROMO-001/SAVE10, PROMO-002/WELCOME20]'
+      required:
+        - subtotal
+        - tax
+        - shipping
+        - discount
+        - total
+        - currency
+        - calculatedAt
+    RemoveItemRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+      required:
+        - id
+    RemovePromotionRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+        promotionId:
+          type: string
+      required:
+        - id
+    RepriceCartRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+      required:
+        - id
+    SaveCartRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+      required:
+        - id
+    ShippingEstimation:
+      type: object
+      description: Represents a ShippingEstimation in the system.
+      properties:
+        country:
+          type: string
+          description: The country of the ShippingEstimation.
+          example: US
+        region:
+          type: string
+          description: The region of the ShippingEstimation.
+          example: California
+        postalCode:
+          type: string
+          description: The postalCode of the ShippingEstimation.
+          example: '90210'
+        shippingMethod:
+          type: string
+          description: The shippingMethod of the ShippingEstimation.
+          example: standard
+      required:
+        - country
+    UpdateItemQuantityRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+      required:
+        - id
+    UpdateShippingRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cart-001
+        shippingEstimation:
+          $ref: '#/components/schemas/ShippingEstimation'
+      required:
+        - id
+  parameters:
+    CartId:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the Cart.
+      schema:
+        type: string
+    CartItemId:
+      name: productId
+      in: path
+      required: true
+      description: The unique identifier for the CartItem.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: 'Bad Request: The server cannot or will not process the request due to something that is perceived to be a client error.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: 'Internal Server Error: The server has encountered a situation it doesn''t know how to handle.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: 'Not Found: The server can not find the requested resource.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

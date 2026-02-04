@@ -1,0 +1,1132 @@
+{
+  "id": "d656acec-dc21-4e1c-9990-650ef114d68a",
+  "name": "Cart Microservice",
+  "projectId": "d3b95aeb-da2b-4bed-874f-13872878a825",
+  "projectName": "MCP",
+  "lanes": [
+    {
+      "id": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "name": "Customer"
+    },
+    {
+      "id": "82107ebd-70bb-42fa-9b86-2eadc2986b39",
+      "name": "System"
+    }
+  ],
+  "boundedContexts": [
+    {
+      "id": "cefc5391-09ee-4cd5-bd4c-787a5d823504",
+      "name": "Cart"
+    }
+  ],
+  "groups": [
+    {
+      "id": "d70c21fc-c8c1-41e2-a081-15784e2e2c30",
+      "name": "Cart Management",
+      "startSlotX": 0
+    },
+    {
+      "id": "d2b161d1-ab16-46be-a0bb-b2f2c92e0142",
+      "name": "Item Management",
+      "startSlotX": 3
+    },
+    {
+      "id": "a1806284-baf5-442a-b761-1d5c892320e4",
+      "name": "Pricing & Shipping",
+      "startSlotX": 7
+    },
+    {
+      "id": "473d432f-1e18-4bad-ba8c-9cc284bb05d8",
+      "name": "Checkout",
+      "startSlotX": 10
+    }
+  ],
+  "domainEvents": [
+    {
+      "id": "be24c8e1-a40a-40d7-8107-3f479b520d9e",
+      "description": "Cart Created",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "start"
+      ],
+      "cards": [
+        {
+          "id": "5a2bd1b5-cd02-415d-8faa-eb5eb56c950c",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Create Cart",
+          "schemaId": "d088e3f0-013e-4a48-afbb-eda8b153f9b9"
+        },
+        {
+          "id": "c32beb09-940a-42e5-a85c-afab17a07c33",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "fcecc484-0a71-4b4c-874d-ed50f6623424",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "8bea8451-d28c-45aa-abf7-e553a17e9105",
+      "description": "Cart Saved",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "be24c8e1-a40a-40d7-8107-3f479b520d9e"
+      ],
+      "cards": [
+        {
+          "id": "07539979-fa4f-4152-94a0-92a9234cdb94",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Save Cart",
+          "schemaId": "7627546f-d506-4afe-aea9-e2de437ddff5"
+        },
+        {
+          "id": "9dc4c20d-fb99-49c0-bd1f-5a358a6c66ac",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "646b01fc-e8e4-4778-81c3-c76047396f43",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Saved Carts",
+          "schemaId": "74c2646d-27ed-4cbd-b1bd-4599b7dc76a7",
+          "cardinality": "one-to-many"
+        }
+      ]
+    },
+    {
+      "id": "a1af96fd-4c67-4680-945a-62608aa4f4e0",
+      "description": "Cart Deleted",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "8bea8451-d28c-45aa-abf7-e553a17e9105"
+      ],
+      "cards": [
+        {
+          "id": "fc06013e-37a1-4133-a059-81dfc5a40afd",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Delete Cart",
+          "schemaId": "f19e0bfa-2f76-4a5f-a0b1-192e33d29b9e"
+        },
+        {
+          "id": "c10ebc6a-802f-4a32-8790-2dbe4ff9d27e",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        }
+      ]
+    },
+    {
+      "id": "6a6f1ba1-339a-4c97-85eb-02ba7fd63cf6",
+      "description": "Item Added",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "groupId": "d2b161d1-ab16-46be-a0bb-b2f2c92e0142",
+      "type": "bpmn:Task",
+      "parents": [
+        "a1af96fd-4c67-4680-945a-62608aa4f4e0"
+      ],
+      "cards": [
+        {
+          "id": "e0628d57-f452-4e23-b1f4-890a526151ac",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Add Item",
+          "schemaId": "1a2b4d6b-73c3-43a5-a005-4e014c882e0f"
+        },
+        {
+          "id": "2cd94b86-695d-4150-b0e3-15d3fc3de5eb",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "0ae0da3d-e725-46f2-af95-49ce0a4bbc54",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "701a699c-5559-467e-9e0d-06be59b63da0",
+      "description": "Item Quantity Updated",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "6a6f1ba1-339a-4c97-85eb-02ba7fd63cf6"
+      ],
+      "cards": [
+        {
+          "id": "896ec9dc-a634-4e32-bf2f-9613b5f8ee03",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Update Item Quantity",
+          "schemaId": "1d57bc49-ddf7-4b9f-9e30-a1cdf6cbf6ce"
+        },
+        {
+          "id": "5fe37046-1c3b-4dbe-a364-9730bfeb4d77",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "3bf2c2a3-3820-45e3-a267-620eef849023",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "450188db-2097-4ac1-a9e1-76df71be5fd4",
+      "description": "Item Removed",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "701a699c-5559-467e-9e0d-06be59b63da0"
+      ],
+      "cards": [
+        {
+          "id": "c1c28976-63e2-4deb-a51f-9a33b6b9afd4",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Remove Item",
+          "schemaId": "77c3c65a-c266-4005-af7d-060787a66aa3"
+        },
+        {
+          "id": "99b0c698-23b8-4658-8c66-30dc0f54d65d",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "b2b331ac-bb5d-4099-8f1d-066c9854140e",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "28d158ee-6ff0-4956-8dfc-c6013d28b8cc",
+      "description": "Cart Cleared",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "450188db-2097-4ac1-a9e1-76df71be5fd4"
+      ],
+      "cards": [
+        {
+          "id": "8b201ecf-4dc3-4bbb-8c3e-45e7cec5b4f5",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Clear Cart",
+          "schemaId": "a364c8f6-f973-4921-8b26-53ef36a88821"
+        },
+        {
+          "id": "e0fbcb47-5293-4942-a573-6d6adb3b0f53",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "ace5f89f-ff56-4bf4-94e7-e4ae9ba9b3f6",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "d3616cfb-dbb9-4d70-9731-dd9fa1810053",
+      "description": "Promotion Applied",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "groupId": "a1806284-baf5-442a-b761-1d5c892320e4",
+      "type": "bpmn:Task",
+      "parents": [
+        "28d158ee-6ff0-4956-8dfc-c6013d28b8cc"
+      ],
+      "cards": [
+        {
+          "id": "613d2c19-c224-4052-857f-3aeb3223b4d5",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Apply Promotion",
+          "schemaId": "e1e3a1e3-716f-4243-8a7d-e205cb9d4678"
+        },
+        {
+          "id": "a4173feb-768f-4184-9c2a-2aa18e8b3f86",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "b38b09aa-ab8b-4057-8808-ce9a3ff7a370",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "722db599-97d1-49d3-8368-40dc68e8415b",
+      "description": "Promotion Removed",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "d3616cfb-dbb9-4d70-9731-dd9fa1810053"
+      ],
+      "cards": [
+        {
+          "id": "7530167f-b8b6-4a44-a64b-3f0a95f256c7",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Remove Promotion",
+          "schemaId": "e0609864-1681-4c6e-80d0-0a89c1c44261"
+        },
+        {
+          "id": "e96ef639-3440-40a4-b6f7-a690e1b4912f",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "b6a3406d-78d3-4236-b792-de33cf07557b",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "aec24a52-c906-41ae-8fb8-f762e7f15891",
+      "description": "Shipping Updated",
+      "laneId": "311ba7eb-b9b9-489f-bd5d-4f9199dce39e",
+      "type": "bpmn:Task",
+      "parents": [
+        "722db599-97d1-49d3-8368-40dc68e8415b"
+      ],
+      "cards": [
+        {
+          "id": "01fcfc7c-4a36-42db-89fd-8feb0035067c",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Update Shipping",
+          "schemaId": "6fc45180-7800-4f47-b652-6aceb0bc6d6f"
+        },
+        {
+          "id": "86eea398-8084-4a42-83d8-c31d959d8bcb",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "d6824d8d-9fd5-4afd-bb80-23a71e58fa20",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "fa1e0234-2eda-443b-a1d5-dc63e0e92b87",
+      "description": "Cart Repriced",
+      "laneId": "82107ebd-70bb-42fa-9b86-2eadc2986b39",
+      "groupId": "473d432f-1e18-4bad-ba8c-9cc284bb05d8",
+      "type": "bpmn:Task",
+      "parents": [
+        "aec24a52-c906-41ae-8fb8-f762e7f15891"
+      ],
+      "cards": [
+        {
+          "id": "6361676e-285e-4351-8347-894599131358",
+          "cardTypeId": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+          "description": "Reprice Cart",
+          "schemaId": "43f9a6b5-1d40-48e5-9673-c9ee2dc8a0d3"
+        },
+        {
+          "id": "03bc6752-ebe2-4da3-8f46-bb42b61563cf",
+          "cardTypeId": "53cb365e-c62b-4244-846e-91bcab55a73c",
+          "description": "Cart",
+          "schemaId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95"
+        },
+        {
+          "id": "11588f29-fe6a-42ff-ac6a-416dcc3f527a",
+          "cardTypeId": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+          "description": "Get Cart By Id",
+          "schemaId": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+          "cardinality": "one-to-one"
+        }
+      ]
+    }
+  ],
+  "schemas": [
+    {
+      "id": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95",
+      "name": "Cart",
+      "boundedContext": "cefc5391-09ee-4cd5-bd4c-787a5d823504",
+      "type": "Entity",
+      "fields": [
+        {
+          "name": "id",
+          "exampleData": [
+            "cart-001",
+            "cart-002",
+            "cart-003"
+          ],
+          "primaryKey": true,
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "userId",
+          "exampleData": [
+            "user-101",
+            "user-202",
+            "user-303"
+          ],
+          "dataType": "string"
+        },
+        {
+          "name": "sessionId",
+          "exampleData": [
+            "sess-abc",
+            "sess-def",
+            "sess-ghi"
+          ],
+          "dataType": "string"
+        },
+        {
+          "name": "saved",
+          "exampleData": [
+            "false",
+            "true",
+            "false"
+          ],
+          "isRequired": true,
+          "dataType": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "exampleData": [
+            "2026-01-15T10:00:00Z",
+            "2026-01-16T14:30:00Z",
+            "2026-01-17T09:15:00Z"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "updatedAt",
+          "exampleData": [
+            "2026-01-15T11:00:00Z",
+            "2026-01-16T15:00:00Z",
+            "2026-01-17T10:00:00Z"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "expiresAt",
+          "exampleData": [
+            "2026-02-14T10:00:00Z",
+            "2026-02-15T14:30:00Z",
+            "2026-02-16T09:15:00Z"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "items",
+          "cardinality": "one-to-many",
+          "relatedEntityId": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+          "dataType": "object"
+        },
+        {
+          "name": "quote",
+          "cardinality": "one-to-one",
+          "relatedEntityId": "14f57b50-50dd-4ed4-a608-e0100f29367f",
+          "dataType": "object"
+        },
+        {
+          "name": "shippingEstimation",
+          "cardinality": "one-to-one",
+          "relatedEntityId": "8c3aa6af-bd60-4a6d-918f-8adaacc8fb2d",
+          "dataType": "object"
+        }
+      ]
+    },
+    {
+      "id": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+      "name": "CartItem",
+      "boundedContext": "cefc5391-09ee-4cd5-bd4c-787a5d823504",
+      "type": "Entity",
+      "fields": [
+        {
+          "name": "productId",
+          "exampleData": [
+            "PROD-001",
+            "PROD-002",
+            "PROD-003"
+          ],
+          "primaryKey": true,
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "sku",
+          "exampleData": [
+            "SKU-BLK-M",
+            "SKU-WHT-L",
+            "SKU-RED-S"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "name",
+          "exampleData": [
+            "Classic T-Shirt",
+            "Running Shoes",
+            "Wireless Headphones"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "quantity",
+          "exampleData": [
+            "2",
+            "1",
+            "3"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "unitPrice",
+          "exampleData": [
+            "29.99",
+            "89.99",
+            "49.99"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "currency",
+          "exampleData": [
+            "USD",
+            "USD",
+            "EUR"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "imageUrl",
+          "exampleData": [
+            "https://img.example.com/tshirt.jpg",
+            "https://img.example.com/shoes.jpg",
+            "https://img.example.com/headphones.jpg"
+          ],
+          "dataType": "string"
+        }
+      ]
+    },
+    {
+      "id": "14f57b50-50dd-4ed4-a608-e0100f29367f",
+      "name": "Quote",
+      "boundedContext": "cefc5391-09ee-4cd5-bd4c-787a5d823504",
+      "type": "Entity",
+      "fields": [
+        {
+          "name": "subtotal",
+          "exampleData": [
+            "149.97",
+            "89.99",
+            "199.95"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "tax",
+          "exampleData": [
+            "14.99",
+            "9.00",
+            "19.00"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "shipping",
+          "exampleData": [
+            "5.99",
+            "0.00",
+            "15.99"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "discount",
+          "exampleData": [
+            "10.00",
+            "0.00",
+            "20.00"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "total",
+          "exampleData": [
+            "160.95",
+            "98.99",
+            "214.94"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "currency",
+          "exampleData": [
+            "USD",
+            "USD",
+            "EUR"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "calculatedAt",
+          "exampleData": [
+            "2026-01-15T11:00:00Z",
+            "2026-01-16T15:00:00Z",
+            "2026-01-17T10:00:00Z"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "appliedPromotions",
+          "cardinality": "one-to-many",
+          "relatedEntityId": "f0943263-5045-4fac-8b9f-e2250cf83f13",
+          "dataType": "object"
+        }
+      ]
+    },
+    {
+      "id": "f0943263-5045-4fac-8b9f-e2250cf83f13",
+      "name": "AppliedPromotions",
+      "type": "Entity",
+      "fields": [
+        {
+          "name": "promotionId",
+          "exampleData": [
+            "PROMO-001",
+            "PROMO-002",
+            "PROMO-003"
+          ],
+          "primaryKey": true,
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "code",
+          "exampleData": [
+            "SAVE10",
+            "WELCOME20",
+            "FREESHIP"
+          ],
+          "dataType": "string"
+        },
+        {
+          "name": "name",
+          "exampleData": [
+            "10% Off Order",
+            "Welcome Discount",
+            "Free Shipping"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "discountAmount",
+          "exampleData": [
+            "10",
+            "20",
+            "15.99"
+          ],
+          "isRequired": true,
+          "dataType": "number"
+        },
+        {
+          "name": "discountType",
+          "exampleData": [
+            "percentage",
+            "percentage",
+            "fixed"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "description",
+          "exampleData": [
+            "Save 10% on your order",
+            "20% off for new customers",
+            "Free shipping on all orders"
+          ],
+          "dataType": "string"
+        }
+      ]
+    },
+    {
+      "id": "8c3aa6af-bd60-4a6d-918f-8adaacc8fb2d",
+      "name": "ShippingEstimation",
+      "boundedContext": "cefc5391-09ee-4cd5-bd4c-787a5d823504",
+      "type": "Entity",
+      "fields": [
+        {
+          "name": "country",
+          "exampleData": [
+            "US",
+            "CA",
+            "UK"
+          ],
+          "isRequired": true,
+          "dataType": "string"
+        },
+        {
+          "name": "region",
+          "exampleData": [
+            "California",
+            "Ontario",
+            "England"
+          ],
+          "dataType": "string"
+        },
+        {
+          "name": "postalCode",
+          "exampleData": [
+            "90210",
+            "M5V 2T6",
+            "SW1A 1AA"
+          ],
+          "dataType": "string"
+        },
+        {
+          "name": "shippingMethod",
+          "exampleData": [
+            "standard",
+            "express",
+            "overnight"
+          ],
+          "dataType": "string"
+        }
+      ]
+    },
+    {
+      "id": "d088e3f0-013e-4a48-afbb-eda8b153f9b9",
+      "name": "CreateCart",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "userId"
+        },
+        {
+          "name": "sessionId"
+        }
+      ]
+    },
+    {
+      "id": "1a2b4d6b-73c3-43a5-a005-4e014c882e0f",
+      "name": "AddItem",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "items",
+          "relatedEntityId": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+          "fields": [
+            {
+              "name": "productId"
+            },
+            {
+              "name": "sku"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "quantity"
+            },
+            {
+              "name": "unitPrice"
+            },
+            {
+              "name": "currency"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1d57bc49-ddf7-4b9f-9e30-a1cdf6cbf6ce",
+      "name": "UpdateItemQuantity",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "items",
+          "relatedEntityId": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+          "fields": [
+            {
+              "name": "productId"
+            },
+            {
+              "name": "sku"
+            },
+            {
+              "name": "quantity"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "77c3c65a-c266-4005-af7d-060787a66aa3",
+      "name": "RemoveItem",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "items",
+          "relatedEntityId": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+          "fields": [
+            {
+              "name": "productId"
+            },
+            {
+              "name": "sku"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a364c8f6-f973-4921-8b26-53ef36a88821",
+      "name": "ClearCart",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "id": "e1e3a1e3-716f-4243-8a7d-e205cb9d4678",
+      "name": "ApplyPromotion",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "promotionId"
+        },
+        {
+          "name": "code"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "discountAmount"
+        },
+        {
+          "name": "discountType"
+        }
+      ]
+    },
+    {
+      "id": "e0609864-1681-4c6e-80d0-0a89c1c44261",
+      "name": "RemovePromotion",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "promotionId"
+        }
+      ]
+    },
+    {
+      "id": "6fc45180-7800-4f47-b652-6aceb0bc6d6f",
+      "name": "UpdateShipping",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "shippingEstimation",
+          "relatedEntityId": "8c3aa6af-bd60-4a6d-918f-8adaacc8fb2d",
+          "fields": [
+            {
+              "name": "country"
+            },
+            {
+              "name": "region"
+            },
+            {
+              "name": "postalCode"
+            },
+            {
+              "name": "shippingMethod"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "43f9a6b5-1d40-48e5-9673-c9ee2dc8a0d3",
+      "name": "RepriceCart",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "id": "7627546f-d506-4afe-aea9-e2de437ddff5",
+      "name": "SaveCart",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "id": "f19e0bfa-2f76-4a5f-a0b1-192e33d29b9e",
+      "name": "DeleteCart",
+      "type": "Command",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "id": "b6a6b784-86e1-4633-b9a2-e49e6d64f527",
+      "name": "GetCartById",
+      "type": "Query",
+      "entityId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95",
+      "fields": [
+        {
+          "name": "id",
+          "isFilter": true
+        },
+        {
+          "name": "userId",
+          "isFilter": false
+        },
+        {
+          "name": "sessionId",
+          "isFilter": false
+        },
+        {
+          "name": "saved",
+          "isFilter": false
+        },
+        {
+          "name": "createdAt",
+          "isFilter": false
+        },
+        {
+          "name": "updatedAt",
+          "isFilter": false
+        },
+        {
+          "name": "expiresAt",
+          "isFilter": false
+        },
+        {
+          "name": "items",
+          "relatedEntityId": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+          "isFilter": false
+        },
+        {
+          "name": "quote",
+          "relatedEntityId": "14f57b50-50dd-4ed4-a608-e0100f29367f",
+          "isFilter": false
+        },
+        {
+          "name": "shippingEstimation",
+          "relatedEntityId": "8c3aa6af-bd60-4a6d-918f-8adaacc8fb2d",
+          "isFilter": false
+        }
+      ]
+    },
+    {
+      "id": "bcde8ad6-0da2-46db-a752-9a4b366f7cf0",
+      "name": "GetCartByUser",
+      "type": "Query",
+      "entityId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95",
+      "fields": [
+        {
+          "name": "userId",
+          "isFilter": true
+        },
+        {
+          "name": "id",
+          "isFilter": false
+        },
+        {
+          "name": "sessionId",
+          "isFilter": false
+        },
+        {
+          "name": "saved",
+          "isFilter": false
+        },
+        {
+          "name": "items",
+          "relatedEntityId": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+          "isFilter": false
+        },
+        {
+          "name": "quote",
+          "relatedEntityId": "14f57b50-50dd-4ed4-a608-e0100f29367f",
+          "isFilter": false
+        },
+        {
+          "name": "shippingEstimation",
+          "relatedEntityId": "8c3aa6af-bd60-4a6d-918f-8adaacc8fb2d",
+          "isFilter": false
+        },
+        {
+          "name": "createdAt",
+          "isFilter": false
+        },
+        {
+          "name": "updatedAt",
+          "isFilter": false
+        },
+        {
+          "name": "expiresAt",
+          "isFilter": false
+        }
+      ]
+    },
+    {
+      "id": "74c2646d-27ed-4cbd-b1bd-4599b7dc76a7",
+      "name": "GetSavedCarts",
+      "type": "Query",
+      "entityId": "fd4e85b6-99ab-4530-9f62-9ff9d9363a95",
+      "fields": [
+        {
+          "name": "userId",
+          "isFilter": true
+        },
+        {
+          "name": "id",
+          "isFilter": false
+        },
+        {
+          "name": "sessionId",
+          "isFilter": false
+        },
+        {
+          "name": "saved",
+          "isFilter": false
+        },
+        {
+          "name": "createdAt",
+          "isFilter": false
+        },
+        {
+          "name": "updatedAt",
+          "isFilter": false
+        },
+        {
+          "name": "expiresAt",
+          "isFilter": false
+        },
+        {
+          "name": "items",
+          "relatedEntityId": "74033d63-cfc7-4cc3-9c87-750ef0981240",
+          "isFilter": false
+        },
+        {
+          "name": "quote",
+          "relatedEntityId": "14f57b50-50dd-4ed4-a608-e0100f29367f",
+          "isFilter": false
+        },
+        {
+          "name": "shippingEstimation",
+          "relatedEntityId": "8c3aa6af-bd60-4a6d-918f-8adaacc8fb2d",
+          "isFilter": false
+        }
+      ]
+    }
+  ],
+  "cardTypes": [
+    {
+      "id": "489fe7e5-af6a-4511-87fb-b88ce461582c",
+      "title": "Command",
+      "domainModelRole": "Command"
+    },
+    {
+      "id": "c64bb047-c578-48cc-b104-1b8735e8baa5",
+      "title": "User Story"
+    },
+    {
+      "id": "898a786a-64ca-4306-9d0f-c045abfbe5e3",
+      "title": "Given-When-Then",
+      "domainModelRole": "GivenWhenThen"
+    },
+    {
+      "id": "8d9c70fc-15d2-4021-8492-a12979f9c2a2",
+      "title": "Problem"
+    },
+    {
+      "id": "53cb365e-c62b-4244-846e-91bcab55a73c",
+      "title": "Aggregate Root",
+      "domainModelRole": "AggregateRoot"
+    },
+    {
+      "id": "10e3e731-09aa-4348-8b13-aa0df504fdbc",
+      "title": "Read Model",
+      "domainModelRole": "ReadModel"
+    },
+    {
+      "id": "6c0bfa8f-9a08-4ad1-8065-c7b58b23d586",
+      "title": "Opportunity"
+    }
+  ],
+  "version": 207,
+  "createdAt": "2026-02-03T08:00:04.265Z",
+  "updatedAt": "2026-02-03T14:39:53.626Z"
+}
