@@ -1,6 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import { config } from './config';
 import { db } from './db/connection';
 import { CartRepository } from './repositories/cart.repository';
