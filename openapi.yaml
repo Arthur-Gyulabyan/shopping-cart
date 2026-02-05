@@ -397,10 +397,6 @@ components:
           type: number
           description: The unitPrice of the CartItem.
           example: '29.99'
-        currency:
-          type: string
-          description: The currency of the CartItem.
-          example: USD
         imageUrl:
           type: string
           description: The imageUrl of the CartItem.
@@ -410,7 +406,6 @@ components:
         - name
         - quantity
         - unitPrice
-        - currency
     ClearCartRequest:
       type: object
       properties:

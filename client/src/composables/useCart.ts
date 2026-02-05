@@ -45,18 +45,18 @@ export function useCart() {
     if (result) cart.value = result
   }
 
-  async function updateQuantity(productId: string, sku: string, quantity: number) {
+  async function updateQuantity(productId: string, quantity: number) {
     if (!cart.value) return
     const result = await run(() =>
-      cartApi.updateItemQuantity(cart.value!.id, [{ productId, sku, quantity }])
+      cartApi.updateItemQuantity(cart.value!.id, [{ productId, quantity }])
     )
     if (result) cart.value = result
   }
 
-  async function removeItem(productId: string, sku: string) {
+  async function removeItem(productId: string) {
     if (!cart.value) return
     const result = await run(() =>
-      cartApi.removeItem(cart.value!.id, [{ productId, sku }])
+      cartApi.removeItem(cart.value!.id, [{ productId }])
     )
     if (result) cart.value = result
   }

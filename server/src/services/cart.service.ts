@@ -42,11 +42,9 @@ export class CartService {
 
     for (const item of req.items) {
       if (!item.productId) throw new ValidationError('productId is required for each item');
-      if (!item.sku) throw new ValidationError('sku is required for each item');
       if (!item.name) throw new ValidationError('name is required for each item');
       if (!item.quantity || item.quantity <= 0) throw new ValidationError('quantity must be greater than 0');
       if (item.unitPrice == null || item.unitPrice < 0) throw new ValidationError('unitPrice must be >= 0');
-      if (!item.currency) throw new ValidationError('currency is required for each item');
     }
 
     await this.repo.addItems(req.id, req.items);

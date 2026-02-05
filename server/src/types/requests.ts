@@ -10,11 +10,10 @@ export interface AddItemRequest {
 
 export interface CartItemInput {
   productId: string;
-  sku: string;
   name: string;
   quantity: number;
   unitPrice: number;
-  currency: string;
+  imageUrl?: string;
 }
 
 export interface UpdateItemQuantityRequest {
@@ -24,7 +23,6 @@ export interface UpdateItemQuantityRequest {
 
 export interface UpdateItemInput {
   productId: string;
-  sku: string;
   quantity: number;
 }
 
@@ -35,7 +33,6 @@ export interface RemoveItemRequest {
 
 export interface RemoveItemInput {
   productId: string;
-  sku: string;
 }
 
 export interface ClearCartRequest {

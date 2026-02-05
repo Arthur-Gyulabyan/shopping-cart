@@ -65,15 +65,14 @@ export class CartRepository {
   async addItems(cartId: string, items: CartItemInput[]): Promise<void> {
     for (const item of items) {
       await this.db.raw(
-        `INSERT INTO cart_items (cart_id, product_id, sku, name, quantity, unit_price, currency)
-         VALUES (?, ?, ?, ?, ?, ?, ?)
+        `INSERT INTO cart_items (cart_id, product_id, name, quantity, unit_price, image_url)
+         VALUES (?, ?, ?, ?, ?, ?)
          ON CONFLICT (cart_id, product_id) DO UPDATE SET
            quantity = cart_items.quantity + EXCLUDED.quantity,
-           sku = EXCLUDED.sku,
            name = EXCLUDED.name,
            unit_price = EXCLUDED.unit_price,
-           currency = EXCLUDED.currency`,
-        [cartId, item.productId, item.sku, item.name, item.quantity, item.unitPrice, item.currency]
+           image_url = EXCLUDED.image_url`,
+        [cartId, item.productId, item.name, item.quantity, item.unitPrice, item.imageUrl || null]
       );
     }
     await this.touchUpdatedAt(cartId);
@@ -84,7 +83,7 @@ export class CartRepository {
     for (const item of items) {
       await this.db('cart_items')
         .where({ cart_id: cartId, product_id: item.productId })
-        .update({ quantity: item.quantity, sku: item.sku });
+        .update({ quantity: item.quantity });
     }
     await this.touchUpdatedAt(cartId);
     await this.nullifyQuote(cartId);
@@ -235,11 +234,9 @@ export class CartRepository {
   private toCartItem(row: Record<string, unknown>): CartItem {
     return {
       productId: row.product_id as string,
-      sku: row.sku as string,
       name: row.name as string,
       quantity: Number(row.quantity),
       unitPrice: Number(row.unit_price),
-      currency: row.currency as string,
       imageUrl: (row.image_url as string) || null,
     };
   }

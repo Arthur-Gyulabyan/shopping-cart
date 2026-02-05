@@ -51,7 +51,7 @@ export function calculateQuote(input: PricingInput): PricingResult {
 
   const total = round2(taxableAmount + tax + shipping);
 
-  const currency = input.items.length > 0 ? input.items[0].currency : 'USD';
+  const currency = 'USD';
 
   return {
     subtotal,

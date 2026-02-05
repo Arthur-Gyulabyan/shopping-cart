@@ -7,17 +7,17 @@ const props = defineProps<{ item: CartItem }>()
 const { updateQuantity, removeItem, loading } = useCart()
 
 function increment() {
-  updateQuantity(props.item.productId, props.item.sku, props.item.quantity + 1)
+  updateQuantity(props.item.productId, props.item.quantity + 1)
 }
 
 function decrement() {
   if (props.item.quantity > 1) {
-    updateQuantity(props.item.productId, props.item.sku, props.item.quantity - 1)
+    updateQuantity(props.item.productId, props.item.quantity - 1)
   }
 }
 
 function remove() {
-  removeItem(props.item.productId, props.item.sku)
+  removeItem(props.item.productId)
 }
 </script>
 
@@ -32,10 +32,10 @@ function remove() {
 
     <div class="flex-1 min-w-0">
       <p class="text-sm font-medium text-gray-900 truncate">{{ item.name }}</p>
-      <p class="text-xs text-gray-500">SKU: {{ item.sku }}</p>
+      <p class="text-xs text-gray-500">ID: {{ item.productId }}</p>
     </div>
 
-    <p class="text-sm text-gray-600 w-20 text-right">{{ formatCurrency(item.unitPrice, item.currency) }}</p>
+    <p class="text-sm text-gray-600 w-20 text-right">{{ formatCurrency(item.unitPrice) }}</p>
 
     <div class="flex items-center gap-1">
       <button
@@ -52,7 +52,7 @@ function remove() {
     </div>
 
     <p class="text-sm font-medium text-gray-900 w-24 text-right">
-      {{ formatCurrency(item.unitPrice * item.quantity, item.currency) }}
+      {{ formatCurrency(item.unitPrice * item.quantity) }}
     </p>
 
     <button @click="remove" :disabled="loading" class="text-gray-400 hover:text-red-600 disabled:opacity-50">

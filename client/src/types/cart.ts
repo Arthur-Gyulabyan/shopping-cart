@@ -13,11 +13,9 @@ export interface Cart {
 
 export interface CartItem {
   productId: string
-  sku: string
   name: string
   quantity: number
   unitPrice: number
-  currency: string
   imageUrl: string | null
 }
 
@@ -57,22 +55,19 @@ export interface CreateCartRequest {
 
 export interface CartItemInput {
   productId: string
-  sku: string
   name: string
   quantity: number
   unitPrice: number
-  currency: string
+  imageUrl?: string
 }
 
 export interface UpdateItemInput {
   productId: string
-  sku: string
   quantity: number
 }
 
 export interface RemoveItemInput {
   productId: string
-  sku: string
 }
 
 export interface ApplyPromotionPayload {
